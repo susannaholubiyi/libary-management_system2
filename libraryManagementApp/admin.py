@@ -11,4 +11,6 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ['book_id', 'status', 'title', 'year_published', 'ISBN']
+    list_display = ('ISBN', 'Title', 'Author', 'Year_published')
+    search_fields = ('Title', 'Author')
+    list_filter = ('Title', 'Author', 'Year_published')
