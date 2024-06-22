@@ -8,8 +8,15 @@ from django.db import models
 
 
 class User(models.Model):
+    USER_TYPES = [
+        ('PRE', 'PREMIUM'),
+        ('NOR', 'NORMAL'),
+        ('LIB', 'LIBRARIAN')
+    ]
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     user_id = models.AutoField(primary_key=True, unique=True, default=0)
-    user_name = models.CharField(max_length=255)
+    member_type = models.CharField(max_length=3, choices=MEMBER_TYPES, default='NOR')
     email = models.EmailField(max_length=255)
     date_of_membership = models.DateTimeField(auto_now=True)
     number_of_books_borrowed = models.IntegerField(default=0)
@@ -25,6 +32,16 @@ class User(models.Model):
 #
 #
 class Book(models.Model):
+    BOOK_TYPES = [
+        ('DRA', 'DRAMA'),
+        ('ROM', 'ROMANCE'),
+        ('HOR', 'HORROR'),
+        ('SCI', 'SCIENTIFIC'),
+        ('FAN', 'FANTASY'),
+        ('ANI', 'ANIME'),
+        ('COM', 'COMEDY'),
+        ('ADV', 'ADVENTURE')
+    ]
     book_id = models.AutoField(primary_key=True, unique=True, default=0)
     STATUS = [("B", "BORROWED"), ("AV", "AVAILABLE")]
     title = models.CharField(max_length=255)
