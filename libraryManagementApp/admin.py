@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from libraryManagementApp.models import User, Book
+from . models import User, Book, BorrowBookRecord
 
 
 # Register your models here.
@@ -12,3 +12,4 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ['book_id', 'status', 'title', 'year_published', 'ISBN']
+
